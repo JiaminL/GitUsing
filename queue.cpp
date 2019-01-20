@@ -38,6 +38,7 @@ bool Queue::enqueue(const Item &item){
 }
 
 bool Queue::dequeue(Item &item){
+	int i; 
 	if(front==NULL) return false;
 	item=front->item;
 	items--;
