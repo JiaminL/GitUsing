@@ -1,4 +1,4 @@
-[1mdiff --git a/lab3.asm b/lab3.asm[m
+ok[1mdiff --git a/lab3.asm b/lab3.asm[m
 [1mnew file mode 100644[m
 [1mindex 0000000..1c3ec22[m
 [1m--- /dev/null[m
@@ -325,3 +325,4 @@
 [31m-	processtime=std::rand()%3+1;[m
 [31m-	arrive=when;[m
 [31m-}[m
+abc
