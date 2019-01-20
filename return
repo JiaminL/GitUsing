@@ -1,0 +1,327 @@
+[1mdiff --git a/lab3.asm b/lab3.asm[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1c3ec22[m
+[1m--- /dev/null[m
+[1m+++ b/lab3.asm[m
+[36m@@ -0,0 +1,261 @@[m
+[32m+[m			[32m.Orig x3000[m
+[32m+[m[32mINIT_CODE	LEA R6, #-1[m
+[32m+[m			[32mADD R5, R6, #0[m
+[32m+[m			[32mADD R6, R6, R6[m
+[32m+[m			[32mADD R6, R6, R6[m
+[32m+[m			[32mADD R6, R6, R5[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mADD R5, R5, R5[m
+[32m+[m			[32mADD R5, R6, #0[m
+[32m+[m			[32mLD R4, GLOBAL_DATA_POINTER[m
+[32m+[m			[32mLD R7, GLOBAL_MAIN_POINTER[m
+[32m+[m			[32mLD R0, GLOBAL_MAIN_POINTER[m
+[32m+[m			[32mJSRR R0[m
+[32m+[m			[32mHALT[m
+[32m+[m
+[32m+[m[32mGLOBAL_DATA_POINTER .FILL GLOBAL_DATA_START[m
+[32m+[m[32mGLOBAL_MAIN_POINTER .FILL MAIN[m
+[32m+[m[32m;;;;;;;;;;;;;;;;;;;;;;;;;;;;func;;;;;;;;;;;;;;;;;;;;;;;;;;;;[m
+[32m+[m[32mLC3_FUNC	ADD R6, R6, #-2[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R5, R6, #0[m
+[32m+[m			[32mADD R5, R6, #-1[m
+[32m+[m
+[32m+[m			[32mADD R6, R6, #-3[m
+[32m+[m			[32mADD R0, R4, #4[m
+[32m+[m			[32mLDR R0, R0, #0[m
+[32m+[m			[32mJSRR R0[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R3, R4, #8[m
+[32m+[m			[32mLDR R3, R3, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R3, R6, #0[m
+[32m+[m			[32mNOT R3, R3[m
+[32m+[m			[32mADD R3, R3, #1[m
+[32m+[m			[32mADD R0, R7, R3[m
+[32m+[m			[32mLDR R3, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R7, R0, #0[m
+[32m+[m			[32mLDR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mLDR R3, R5, #5[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mLDR R3, R5, #6[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mLDR R3, R5, #7[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mLDR R3, R5, #8[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mLDR R3, R5, #9[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mLDR R3, R5, #10[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mSTR R7, R5, #0[m
+[32m+[m			[32mLDR R7, R5, #4[m
+[32m+[m			[32mADD R3, R4, #7[m
+[32m+[m			[32mLDR R3, R3, #0[m
+[32m+[m			[32mNOT R7, R7[m
+[32m+[m			[32mADD R7, R7, #1[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mBRn L7[m
+[32m+[m			[32mADD R7, R4, #1[m
+[32m+[m			[32mLDR R7, R7, #0[m
+[32m+[m			[32mJMP R7[m
+[32m+[m[32mL7			LDR R7, R5, #10[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #9[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #8[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #7[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #6[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #5[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #4[m
+[32m+[m			[32mADD R3, R4, #7[m
+[32m+[m			[32mLDR R3, R3, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R3, R6, #0[m
+[32m+[m			[32mNOT R3, R3[m
+[32m+[m			[32mADD R3, R3, #1[m
+[32m+[m			[32mADD R0, R7, R3[m
+[32m+[m			[32mLDR R3, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R7, R0, #0[m
+[32m+[m			[32mLDR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R0, R4, #0[m
+[32m+[m			[32mLDR R0, R0, #0[m
+[32m+[m			[32mJSRR R0[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mSTR R7, R5, #-1[m
+[32m+[m			[32mLDR R7, R5, #10[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #9[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #8[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #7[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #6[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #5[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #4[m
+[32m+[m			[32mADD R3, R4, #6[m
+[32m+[m			[32mLDR R3, R3, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R3, R6, #0[m
+[32m+[m			[32mNOT R3, R3[m
+[32m+[m			[32mADD R3, R3, #1[m
+[32m+[m			[32mADD R0, R7, R3[m
+[32m+[m			[32mLDR R3, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R7, R0, #0[m
+[32m+[m			[32mLDR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R0, R4, #0[m
+[32m+[m			[32mLDR R0, R0, #0[m
+[32m+[m			[32mJSRR R0[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mSTR R7, R5, #-2[m
+[32m+[m			[32mLDR R7, R5, #-1[m
+[32m+[m			[32mLDR R3, R5, #-2[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mLDR R3, R5, #0[m
+[32m+[m			[32mADD R7, R7, R3[m
+[32m+[m			[32mADD R3, R4, #7[m
+[32m+[m			[32mLDR R3, R3, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R3, R6, #0[m
+[32m+[m			[32mNOT R3, R3[m
+[32m+[m			[32mADD R3, R3, #1[m
+[32m+[m			[32mADD R0, R7, R3[m
+[32m+[m			[32mLDR R3, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R7, R0, #0[m
+[32m+[m			[32mLDR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R0, R4, #2[m
+[32m+[m			[32mLDR R0, R0, #0[m
+[32m+[m			[32mJMP R0[m
+[32m+[m[32mlc3_L3_lab3	LDR R7, R5, #0[m
+[32m+[m[32mlc3_L1_lab3	STR R7, R5, #3[m
+[32m+[m			[32mADD R6, R5, #1[m
+[32m+[m			[32mLDR R5, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mRET[m
+[32m+[m
+[32m+[m[32m;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAIN;;;;;;;;;;;;;;;;;;;;;;;;;;;;[m
+[32m+[m[32mMAIN		ADD R6, R6, #-2[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R5, R6, #0[m
+[32m+[m			[32mADD R5, R6, #-1[m
+[32m+[m[41m		[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mADD R0, R4, #4[m
+[32m+[m			[32mLDR R0, R0, #0[m
+[32m+[m			[32mJSRR R0[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R3, R4, #8[m
+[32m+[m			[32mLDR R3, R3, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R3, R6, #0[m
+[32m+[m			[32mNOT R3, R3[m
+[32m+[m			[32mADD R3, R3, #1[m
+[32m+[m			[32mADD R0, R7, R3[m
+[32m+[m			[32mLDR R3, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mADD R7, R0, #0[m
+[32m+[m			[32mLDR R0, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mSTR R7, R5, #0[m
+[32m+[m			[32mADD R7, R4, #5[m
+[32m+[m			[32mLDR R7, R7, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mLDR R7, R5, #0[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mSTR R7, R6, #0[m
+[32m+[m			[32mADD R0, R4, #0[m
+[32m+[m			[32mLDR R0, R0, #0[m
+[32m+[m			[32mJSRR R0[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m[32mlc3_L8_lab3	STR R7, R5, #3[m
+[32m+[m			[32mADD R6, R5, #1[m
+[32m+[m			[32mLDR R5, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mLDR R7, R6, #0[m
+[32m+[m			[32mADD R6, R6, #1[m
+[32m+[m			[32mRET[m
+[32m+[m
+[32m+[m[32m; char getchar(void)[m
+[32m+[m
+[32m+[m[32mlc3_getchar	STR R7, R6, #-3[m
+[32m+[m			[32mSTR R0, R6, #-2[m
+[32m+[m			[32mGETC[m
+[32m+[m			[32mOUT[m
+[32m+[m			[32mSTR R0, R6, #-1[m
+[32m+[m			[32mLDR R0, R6, #-2[m
+[32m+[m			[32mLDR R7, R6, #-3[m
+[32m+[m			[32mADD R6, R6, #-1[m
+[32m+[m			[32mRET[m
+[32m+[m
+[32m+[m[32mGLOBAL_DATA_START[m
+[32m+[m[32mfunc 		.FILL lc3_func[m
+[32m+[m[32mL3_lab3 	.FILL lc3_L3_lab3[m
+[32m+[m[32mL1_lab3 	.FILL lc3_L1_lab3[m
+[32m+[m[32mL8_lab3 	.FILL lc3_L8_lab3[m
+[32m+[m[32mgetchar 	.FILL lc3_getchar[m
+[32m+[m[32mL9_lab3 	.FILL #0[m
+[32m+[m[32mL6_lab3 	.FILL #2[m
+[32m+[m[32mL5_lab3 	.FILL #1[m
+[32m+[m[32mL2_lab3 	.FILL #48[m
+[32m+[m			[32m.END[m
+\ No newline at end of file[m
+[1mdiff --git a/queue.cpp b/queue.cpp[m
+[1mdeleted file mode 100644[m
+[1mindex b04cffa..0000000[m
+[1m--- a/queue.cpp[m
+[1m+++ /dev/null[m
+[36m@@ -1,53 +0,0 @@[m
+[31m-//queue.cpp -- Queue and Customer methods[m
+[31m-#include "queue.h"[m
+[31m-#include <cstdlib>[m
+[31m-[m
+[31m-//Queue methods[m
+[31m-Queue::Queue(int qs):qsize(qs){[m
+[31m-	front=rear=NULL;[m
+[31m-	items=0;[m
+[31m-}[m
+[31m-[m
+[31m-Queue::~Queue(){[m
+[31m-	Node *temp;[m
+[31m-	while(front!=NULL){[m
+[31m-		temp=front;[m
+[31m-		front=front->next;[m
+[31m-		delete temp; [m
+[31m-	}[m
+[31m-}[m
+[31m-[m
+[31m-bool Queue::isempty() const {return items==0;}[m
+[31m-[m
+[31m-bool Queue::isfull() const {return items==qsize;}[m
+[31m-[m
+[31m-int Queue::queuecount() const {return items;}[m
+[31m-[m
+[31m-//Add item to queue[m
+[31m-bool Queue::enqueue(const Item &item){[m
+[31m-	if(isfull()) return false;[m
+[31m-	Node *add=new Node;[m
+[31m-	add->item=item;[m
+[31m-	add->next=NULL;[m
+[31m-	items++;[m
+[31m-	if (front == NULL) front=add;[m
+[31m-	else rear->next=add;[m
+[31m-	rear=add;[m
+[31m-	return true;[m
+[31m-}[m
+[31m-[m
+[31m-bool Queue::dequeue(Item &item){[m
+[31m-	if(front==NULL) return false;[m
+[31m-	item=front->item;[m
+[31m-	items--;[m
+[31m-	Node *temp=front;[m
+[31m-	front=front->next;[m
+[31m-	delete temp;[m
+[31m-	if (items==0) rear=NULL;[m
+[31m-	return true; [m
+[31m-}[m
+[31m-[m
+[31m-void Customer::set(long when){[m
+[31m-	processtime=std::rand()%3+1;[m
+[31m-	arrive=when;[m
+[31m-}[m
