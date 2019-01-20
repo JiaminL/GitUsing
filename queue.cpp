@@ -4,6 +4,7 @@
 
 //Queue methods
 Queue::Queue(int qs):qsize(qs){
+	char c=0; 
 	front=rear=NULL;
 	items=0;
 }
